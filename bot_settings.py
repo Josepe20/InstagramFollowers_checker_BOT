@@ -13,7 +13,7 @@ INSTAGRAM_PASSWORD = decouple.config('BOT_INSTAGRAM_PASSWORD')
 CHROME_DRIVER_PATH = r"C:\Users\chepe\Desktop\Development\chromedriver.exe"
 
 class InstagramFollowerBot:
-    def __init__(self):
+    def __init__(self, profile_to_visit):
         self.driver = webdriver.Chrome(executable_path=CHROME_DRIVER_PATH)
 
     def log_in_bot(self):
@@ -38,21 +38,21 @@ class InstagramFollowerBot:
         modal = self.driver.find_element(By.CLASS_NAME, "_aano")
         for i in range(100):
             self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
-            time.sleep(0.5)
+            time.sleep(1)
 
 
         ## this code scroll inside a popup
         all_span_names = self.driver.find_elements(By.CSS_SELECTOR, "span._aacl._aaco._aacw._aacx._aad7._aade")
 
-        print(all_span_names)
-        print(len(all_span_names))
         # https://www.instagram.com/josechay_20/
-        following_users = [span.text for span in all_span_names]
-        #
-        print(following_users)
-        print(len(following_users))
 
-        time.sleep(5)
+        following_users = [span.text for span in all_span_names]
+
+        time.sleep(3)
+
+        return following_users
+
+
 
     def find_follower_users(self, profile_to_visit):
         """This function looks for followers """
@@ -63,17 +63,21 @@ class InstagramFollowerBot:
         modal = self.driver.find_element(By.CLASS_NAME, "_aano")
         for i in range(100):
             self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
-            time.sleep(0.5)
+            time.sleep(1)
 
         ## this code scroll inside a popup
         all_span_names = self.driver.find_elements(By.CSS_SELECTOR, "span._aacl._aaco._aacw._aacx._aad7._aade")
 
-        print(all_span_names)
-        print(len(all_span_names))
         # https://www.instagram.com/josechay_20/
-        following_users = [span.text for span in all_span_names]
-        #
-        print(following_users)
-        print(len(following_users))
 
-        time.sleep(5)
+        followers_users = [span.text for span in all_span_names]
+
+        time.sleep(3)
+
+        return followers_users
+
+
+
+
+
+
