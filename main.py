@@ -20,25 +20,23 @@ print(len(following))
 print(followers)
 print(len(followers))
 
-# merging following & followers lists. then creating a new list of unique items
-merged_user_list = following + followers
+following_set = set(following)
+followers_set = set(followers)
 
-new_list = []
-duplicates = set()
+# Elements that are in following_set but not in followers_set
+uncommon_following = list(following_set - followers_set)
 
-for item in merged_user_list:
-    if item not in duplicates:
-        if item not in new_list:
-            new_list.append(item)
-        else:
-            duplicates.add(item)
+# Elements that are in followers_set but not in following_set
+uncommon_followers = list(followers_set - following_set)
 
-# this list unique items contains users who don't follow you or you neither follow them
-unique_items = [item for item in new_list if item not in duplicates]
+print(uncommon_following)
+print(len(uncommon_following))
 
-print(unique_items)
-print(len(unique_items))
+print(uncommon_followers)
+print(len(uncommon_followers))
 
+# merge uncommon lists with unique elements
+unique_items = uncommon_followers + uncommon_following
 
 # define the title and bullet point list
 title = 'Users who don\'t follow you or you neither follow them'
