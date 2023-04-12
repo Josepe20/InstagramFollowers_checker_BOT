@@ -3,14 +3,15 @@ from reportlab.pdfgen import canvas
 
 # josechay_20
 
-profile_input = input(f"May you provide me your instagram user name: ")
-print(profile_input)
+# input where you may provide username
+profile_input = input(f"May you provide me your instagram username:")
 
 profile_link = f"https://www.instagram.com/{profile_input}/"
 
 bot = InstagramFollowerBot(profile_link)
 bot.log_in_bot()
 
+# converting methods to variables, which are lists
 following = bot.find_following_users(profile_to_visit=profile_link)
 followers = bot.find_follower_users(profile_to_visit=profile_link)
 
@@ -19,7 +20,7 @@ print(len(following))
 print(followers)
 print(len(followers))
 
-
+# merging following & followers lists. then creating a new list of unique items
 merged_user_list = following + followers
 
 new_list = []
@@ -29,6 +30,8 @@ for item in merged_user_list:
     if item not in duplicates:
         if item not in new_list:
             new_list.append(item)
+        else:
+            duplicates.add(item)
 
 # this list unique items contains users who don't follow you or you neither follow them
 unique_items = [item for item in new_list if item not in duplicates]

@@ -30,7 +30,8 @@ class InstagramFollowerBot:
         time.sleep(8)
 
     def find_following_users(self, profile_to_visit):
-        """This function looks for followers """
+        """This function looks for followers section, scroll down and then create a list of all followings.
+            Finally, return that list"""
         self.driver.get(url=f'{profile_to_visit}following/')
         time.sleep(2)
 
@@ -55,7 +56,8 @@ class InstagramFollowerBot:
 
 
     def find_follower_users(self, profile_to_visit):
-        """This function looks for followers """
+        """This function looks for followers section, scroll down and then create a list of all followers.
+            Finally, return that list"""
         self.driver.get(url=f'{profile_to_visit}followers/')
         time.sleep(2)
 
