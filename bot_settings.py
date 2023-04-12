@@ -36,7 +36,7 @@ class InstagramFollowerBot:
         time.sleep(2)
 
         # this code scrolls inside a popup
-        modal = self.driver.find_element(By.CLASS_NAME, "_aano")
+        modal = self.driver.find_element(By.CSS_SELECTOR, "div._aano")
         for i in range(100):
             self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
             time.sleep(1)
@@ -62,7 +62,7 @@ class InstagramFollowerBot:
         time.sleep(2)
 
         # this code scrolls inside a popup
-        modal = self.driver.find_element(By.CLASS_NAME, "_aano")
+        modal = self.driver.find_element(By.CSS_SELECTOR, "div._aano")
         for i in range(100):
             self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", modal)
             time.sleep(1)
